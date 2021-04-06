@@ -1,0 +1,12 @@
+<div>
+  <h2>Favorites</h2>
+  <div>
+    Work in progress
+  </div>
+</div>
+<div>
+  Trending movies this week
+  <div class="movie-list" *ngIf="trendingMovies$ | async; let trendingMovies">
+    <app-movie-list [items]="trendingMovies"></app-movie-list>
+  </div>
+</div>
