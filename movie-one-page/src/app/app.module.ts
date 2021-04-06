@@ -8,12 +8,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import {SharedModule} from "./components/shared/shared.module";
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SearchResultsComponent} from "./components/search-results/search-results.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

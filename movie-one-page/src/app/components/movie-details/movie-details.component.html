@@ -1,1 +1,4 @@
-<p>movie-details works!</p>
+<div *ngIf="movieItem$ | async; let movie" class="item-container">
+  <div class="image" [ngStyle]="{'background-image': getUrl(movie.backdrop_path)}"></div>
+  <div class="details"></div>
+</div>

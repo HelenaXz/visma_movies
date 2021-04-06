@@ -14,7 +14,6 @@ export class MovieItemComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.item)
   }
 
   getUrl() {
