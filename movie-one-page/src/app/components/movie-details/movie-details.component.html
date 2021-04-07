@@ -1,4 +1,25 @@
-<div *ngIf="movieItem$ | async; let movie" class="item-container">
-  <div class="image" [ngStyle]="{'background-image': getUrl(movie.backdrop_path)}"></div>
-  <div class="details"></div>
+<div *ngIf="movieItem$ | async; let movie">
+  <div  class="item-container">
+    <div class="image-container">
+      <img class="image" src="{{getImageUrl(movie.backdrop_path)}}" alt="movie-image">
+    </div>
+    <div class="details">
+      <div *ngFor="let value of valueLabels" class="{{value.property}}"><span *ngIf="value.label">{{ value.label }} </span>{{ movie[value.property] }}</div>
+    </div>
+  </div>
+  <div class="item-container more-info">
+    <h3>More info</h3>
+    <div class="details">
+      <ng-container *ngFor="let value of moreInfoLabels">
+        <div *ngIf="movie[value.property]" class="{{value.property}}" >
+          <span *ngIf="value.label" class="label">{{ value.label }} </span>
+          <span *ngIf="!value.addLink && !value.isDate">{{ movie[value.property] }}</span>
+          <span *ngIf="value.isDate">{{ movie[value.property] | date }}</span>
+          <a *ngIf="value.addLink" [href]="movie[value.property]">{{ movie[value.property] }}</a>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
 </div>
+

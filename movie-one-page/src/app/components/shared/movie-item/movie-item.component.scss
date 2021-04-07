@@ -1,6 +1,7 @@
 .item-container {
   border: 10px solid #351f39;
-  margin: 5px;
+  border-radius: 5px;
+  margin: 0.8vw;
 
   .back-image {
     width: 300px;
@@ -21,6 +22,10 @@
     }
     .title, .release-date, .genres {
       margin: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 280px;
     }
     .title:hover {
       color: #719fb0;
@@ -28,9 +33,19 @@
     }
     .release-date {
       font-size: 0.8em;
+      height: 1.3em;
     }
     .genres {
       font-size: 0.7em;
+      height: 1.3em;
     }
+  }
+}
+
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .item-container {
+    border: 2px solid #351f39;
+    margin: 5px;
   }
 }

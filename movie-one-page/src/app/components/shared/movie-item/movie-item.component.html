@@ -1,8 +1,8 @@
-<div class="item-container" *ngIf="item.backdrop_path" >
-  <div class="back-image" [ngStyle]="{'background-image': getUrl()}" (click)="openItem()"></div>
+<div class="item-container" >
+  <div class="back-image" [ngStyle]="{'background-image': getBackgroundUrl()}" (click)="openItem()"></div>
   <div class="details">
-    <p class="title" (click)="openItem()">{{item.title || item.name}}</p>
-    <p class="release-date">{{item.release_date || item.first_air_date | date}}</p>
+    <p class="title" (click)="openItem()">{{item.title}}</p>
+    <p class="release-date">{{item.release_date | date}}</p>
     <p class="genres">{{ getGenreNames(item.genre_ids)}} </p>
   </div>
 </div>

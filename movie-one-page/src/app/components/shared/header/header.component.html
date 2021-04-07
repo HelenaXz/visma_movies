@@ -1,16 +1,13 @@
-<nav class="navbar sticky-top navbar-expand navbar-light bg-light">
-  <div class="nav collapse navbar-collapse" id="navbarTogglerDemo01" #navbarTogglerDemo01>
+<nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+  <div class="nav collapse navbar-collapse">
     <ul class="nav-items navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="navbar-brand" href="#">Home</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Favorites</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for a movie" aria-label="Search" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" (click)="navigateAndSearch()">Search</button>
     </form>
   </div>
 </nav>

@@ -1,26 +1,24 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MovieService} from "../../../services/movie.service";
 import {Router} from "@angular/router";
+import {MovieCardItem} from "../shared.types";
 
 @Component({
   selector: 'app-movie-item',
   templateUrl: './movie-item.component.html',
   styleUrls: ['./movie-item.component.scss']
 })
-export class MovieItemComponent implements OnInit {
-  @Input() item: any;
+export class MovieItemComponent {
+  @Input() item: MovieCardItem;
 
   constructor(private movieService: MovieService,
               private router: Router) { }
 
-  ngOnInit(): void {
+  public getBackgroundUrl(): string {
+    return  this.item.backdrop_path ? `url('https://image.tmdb.org/t/p/w300${this.item.backdrop_path}')` : `url('https://betravingknows.com/wp-content/uploads/2017/06/video-movie-placeholder-image-grey.png)`
   }
 
-  getUrl() {
-    return `url('https://image.tmdb.org/t/p/w300${this.item.backdrop_path}')`
-  }
-
-  getGenreNames(genre_ids: number[]): string {
+  public getGenreNames(genre_ids: number[]): string {
     const result = [];
     genre_ids.map(id =>{
       const name = this.movieService.getGenreNameFromId(id);
@@ -28,10 +26,10 @@ export class MovieItemComponent implements OnInit {
         result.push(name)
       }
     })
-    return result.join(', ')
+    return result.join(', ');
   }
 
-  openItem() {
+  public openItem(): void {
     this.router.navigate(['/movie', this.item.id])
   }
 }

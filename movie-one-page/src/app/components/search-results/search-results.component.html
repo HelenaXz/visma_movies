@@ -1,1 +1,20 @@
-<p>search-results works!</p>
+<div>
+  <ng-container *ngIf="searchResults$ | async; let searchResults">
+    <h2>Results for: {{ searchString }}</h2>
+    <div class="movie-list">
+      {{ searchResults.results.length}}
+      <div class="result-container" *ngIf="searchResults.total_results > 0">
+        <app-movie-list  [items]="searchResults.results"></app-movie-list>
+        <ngb-pagination (pageChange)="onPageChange($event)"
+                        [pageSize]="20"
+                        [collectionSize]="searchResults.total_results"
+                        [(page)]="page" [rotate]="true"
+                        [maxSize]="3"></ngb-pagination>
+      </div>
+      <div *ngIf="searchResults.results.length <= 0" class="no-results"><h3>No results found</h3></div>
+    </div>
+  </ng-container>
+  <div *ngIf="!(searchResults$)" class="no-results">
+    <h3><img class="search-icon" src="assets/images/search-icon.png" alt="search-icon"/>Please make a search</h3>
+  </div>
+</div>

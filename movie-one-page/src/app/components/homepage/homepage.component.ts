@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieService} from "../../services/movie.service";
 import {Observable} from "rxjs";
+import {SearchResults} from "../shared/shared.types";
 
 @Component({
   selector: 'app-homepage',
@@ -8,15 +9,12 @@ import {Observable} from "rxjs";
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  public trendingMovies$: Observable<any>;
+  public trendingMovies$: Observable<SearchResults>;
 
   constructor(private movieService: MovieService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.trendingMovies$ = this.movieService.getTrendingMovies();
-    this.trendingMovies$.subscribe(data => {
-      console.log(data)
-    })
   }
 
 }

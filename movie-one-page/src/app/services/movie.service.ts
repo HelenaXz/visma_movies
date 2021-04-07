@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Genre, MovieDetailsItem, SearchResults} from "../components/shared/shared.types";
+import {GLOBAL} from "../components/shared/shared.const";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  private genres
+  private genres: Genre[];
 
   constructor(private http: HttpClient) {
     this.getGenres();
-    console.log('here')
   }
 
-  public getTrendingMovies(): Observable<any> {
-    return this.http.get<any>('https://api.themoviedb.org/3/trending/movie/day?api_key=d72c51181f088a9be60f724e8ddfaeb8')
+  public getTrendingMovies(): Observable<SearchResults> {
+    return this.http.get<SearchResults>(`${GLOBAL.baseUrl}/trending/movie/day?${GLOBAL.apiKey}`)
   }
   public getGenres(): void {
-    this.http.get<any>('https://api.themoviedb.org/3/genre/movie/list?api_key=d72c51181f088a9be60f724e8ddfaeb8').subscribe(data => {
+    this.http.get<any>(`${GLOBAL.baseUrl}/genre/movie/list?${GLOBAL.apiKey}`).subscribe(data => {
       this.genres = data.genres;
     })
   }
-  public getMovie(id): Observable<any> {
-    return this.http.get<any>(`https://api.themoviedb.org/3/movie/${id}?api_key=d72c51181f088a9be60f724e8ddfaeb8`);
+  public getMovie(id): Observable<MovieDetailsItem> {
+    return this.http.get<MovieDetailsItem>(`${GLOBAL.baseUrl}/movie/${id}?${GLOBAL.apiKey}`);
   }
 
   public getGenreNameFromId(id): string {

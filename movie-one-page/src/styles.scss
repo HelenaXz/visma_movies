@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+// update boostrap primary color
+$primary: #726a95;
+// import in the bootstrap SASS file
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import "src/assets/variables";
 html,
 body, app-root, app-movie-details{
   display: flex;
   flex-flow: column;
   height: 100%;
+  background-color: $basePurple-dark-3;
+}
+
+h2, h3 {
+  color: white;
 }
