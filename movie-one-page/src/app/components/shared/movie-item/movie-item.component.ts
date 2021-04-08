@@ -15,7 +15,7 @@ export class MovieItemComponent {
               private router: Router) { }
 
   public getBackgroundUrl(): string {
-    return  this.item.backdrop_path ? `url('https://image.tmdb.org/t/p/w300${this.item.backdrop_path}')` : `url('https://betravingknows.com/wp-content/uploads/2017/06/video-movie-placeholder-image-grey.png)`
+    return this.item.backdrop_path ? `url('https://image.tmdb.org/t/p/w300${this.item.backdrop_path}')` : null;
   }
 
   public getGenreNames(genre_ids: number[]): string {
@@ -23,13 +23,13 @@ export class MovieItemComponent {
     genre_ids.map(id =>{
       const name = this.movieService.getGenreNameFromId(id);
       if (name) {
-        result.push(name)
+        result.push(name);
       }
     })
     return result.join(', ');
   }
 
   public openItem(): void {
-    this.router.navigate(['/movie', this.item.id])
+    this.router.navigate(['/movie', this.item.id]);
   }
 }

@@ -15,6 +15,7 @@
     background-color: rgba(114, 106, 149, 0.2);
     padding: 2vh 2vw;
     border-radius: 5px;
+    height: 30vh;
   }
 
   .image-container {
@@ -31,6 +32,7 @@
       position: relative;
       border: 10px solid $basePurple;
       border-radius: 5px;
+      max-width: 500px;
     }
   }
   .details {
@@ -63,6 +65,9 @@ $breakpoint-tablet: 768px;
     margin: 6vh 0 2vw 0;
     .image-container {
       margin: 0;
+      &.more-info {
+        height: 40vh;
+      }
       .image {
         height: 50vw;
       }

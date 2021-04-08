@@ -1,5 +1,8 @@
+:host {
+  width: 100%;
+}
 .item-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
 }

@@ -28,15 +28,15 @@ export class MovieDetailsComponent implements OnInit {
   public ngOnInit(): void {
     this.movieItem$ = this.movieService.getMovie(this.id).pipe(map(movie => {
       movie.genreString = SharedUtils.joinArrayIntoString(movie.genres, ', ', 'name');
-      movie.productionCountryString = SharedUtils.joinArrayIntoString(movie.production_countries, ', ', 'name')
-      movie.productionCompanyString = SharedUtils.joinArrayIntoString(movie.production_companies, ', ', 'name')
+      movie.productionCountryString = SharedUtils.joinArrayIntoString(movie.production_countries, ', ', 'name');
+      movie.productionCompanyString = SharedUtils.joinArrayIntoString(movie.production_companies, ', ', 'name');
 
-      return movie
+      return movie;
     }));
   }
 
   public getImageUrl(path: string): string {
-    return `https://image.tmdb.org/t/p/w500${path}`
+    return path ? `https://image.tmdb.org/t/p/w500${path}` : 'assets/images/movie-placeholder.png';
   }
 
 }
